@@ -7,5 +7,5 @@ import "github.com/google/uuid"
 type OrderService interface {
 	CreateOrder(ctx context.Context, customerID uuid.UUID) (*domain.Order, error)
 	GetOrder(ctx context.Context, id uuid.UUID) (*domain.Order, error)
-	MarkOrderDelivered(ctx context.Context, id uuid.UUID, status string) error
+	UpdateStatus(ctx context.Context, id uuid.UUID, status string) error
 }

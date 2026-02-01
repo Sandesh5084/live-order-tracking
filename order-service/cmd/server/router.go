@@ -23,7 +23,7 @@ func setupRouter(
 	r.Route("/orders", func(r chi.Router) {
 		r.Post("/", orderHandler.CreateOrder)
 		r.Get("/{id}", orderHandler.GetOrder)
-		r.Put("/{id}/deliver", orderHandler.MarkDelivered)
+		r.Put("/{id}/deliver", orderHandler.UpdateStatus)
 	})
 
 	return r
