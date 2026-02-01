@@ -63,11 +63,11 @@ func (h *OrderHandler) GetOrder(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(resp)
 }
 
-func (h *OrderHandler) MarkDelivered(w http.ResponseWriter, r *http.Request) {
+func (h *OrderHandler) UpdateStatus(w http.ResponseWriter, r *http.Request) {
 	id := chi.URLParam(r, "id")
 	statusDelivered := "delivered"
 
-	err := h.service.MarkOrderDelivered(r.Context(), uuid.MustParse(id), statusDelivered)
+	err := h.service.UpdateStatus(r.Context(), uuid.MustParse(id), statusDelivered)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
